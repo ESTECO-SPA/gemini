@@ -113,7 +113,7 @@ Notice that the address are absolute path so ```<previous_path>``` is referring 
 pointing the ```root_folder```
 
 ### Step 6: download necessary files and set DATA_PATH
-To execute the script contained in  you need to download [this](https://drive.google.com/file/d/1jCMyq9v8kKEsZKhUZGq3W5bhu89iUeG6/view?usp=sharing) zip. 
+To execute the script contained in  you need to download [this](https://github.com/ESTECO-SPA/gemini/blob/main/contribution/analysis/data.zip) zip. 
 It contains the data folder that you have to extract in the `<root_folder>` and the xosc folder (you have to copy its content into `esmini/resources/xosc/`)
 Read the instruction contained into it. 
 
