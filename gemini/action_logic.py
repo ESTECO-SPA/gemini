@@ -3,7 +3,7 @@ from typing import List
 
 import torch
 
-from external import Variational_Generator
+from external import VariationalGenerator
 from gemini.common import VehicleState, DelayedQueue, VehicleTrajectory, Point2d, TimedVehicleState
 from gemini.connector.osi_connector import NearVehicles, GroundTruthInfo
 
@@ -56,7 +56,7 @@ class FollowTrajectoryLogic(ActionLogic):
 
 
 class VariationalGeneratorLogic(ActionLogic):
-    def __init__(self, variational_generator: Variational_Generator, sampling_time: float, visitor: dict) -> None:
+    def __init__(self, variational_generator: VariationalGenerator, sampling_time: float, visitor: dict) -> None:
         self.sampling_time = sampling_time
         self.time = None
         self.variational_generator = variational_generator

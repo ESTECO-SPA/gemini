@@ -2,7 +2,7 @@ import multiprocessing
 
 import pandas as pd
 
-from external import VariationalGenerator
+from external import VariationalGeneratorEncoded
 from gemini.action_logic import VariationalGeneratorLogic
 from gemini.actors import SimulationLink, SimulationRecorder
 from gemini.dataset import TrajectoryDatabase
@@ -13,7 +13,10 @@ from gemini.simulator.esmini import run_scenario
 input_size = 18
 hidden_layers = [18, 18, 16, 16, 14, 14, 12, 12, 12]
 output_size = 5  # 5 (actions in the form of mu_x, mu_y, sigma_x, sigma_y, and ρ (correlation factor)
-generator = VariationalGenerator(input_size, hidden_layers, output_size)
+variational_generator_path = "/home/ssilvetti/variational_generator/variational_generator";
+generator = VariationalGeneratorEncoded(input_size, hidden_layers, output_size,
+                                        get_path_data_file("variational_generator/variational_generator"),
+                                        get_path_data_file("end_generator2.pt"))
 
 tracks = pd.read_csv(get_path_data_file('corrected_tracks.csv'))
 db = TrajectoryDatabase(tracks)
@@ -26,10 +29,10 @@ proc = multiprocessing.Process(target=run_scenario, args=('try.xosc',))
 proc.start()
 recorder = SimulationRecorder()
 data = dict()
-logic = VariationalGeneratorLogic(generator, 0.05, data)
+logic = VariationalGeneratorLogic(generator, 1, data)
 actors = scenario_model_generator.get_agent_with_model(model_logic=logic)
 # actors = scenario_model_generator.get_agents()
 simulation = SimulationLink(actors=actors + [recorder])
-simulation.live(time_step=0.05, max_time=scenario_model_generator.get_time())
+simulation.live(time_step=1, max_time=scenario_model_generator.get_time())
 recorder.get_simulation_trajectory().plot_position()
 proc.terminate()

@@ -3,7 +3,7 @@ import pickle
 
 import pandas as pd
 
-from external import Variational_Generator
+from external import VariationalGenerator
 from gemini.action_logic import VariationalGeneratorLogic
 from gemini.actors import SimulationLink, SimulationRecorder
 from gemini.dataset import TrajectoryDatabase
@@ -19,7 +19,7 @@ from gemini.simulator.esmini import run_scenario
 input_size = 18
 hidden_layers = [18, 18, 16, 16, 14, 14, 12, 12, 12]
 output_size = 5  # 5 (actions in the form of mu_x, mu_y, sigma_x, sigma_y, and ρ (correlation factor)
-generator = Variational_Generator(input_size, hidden_layers, output_size)
+generator = VariationalGenerator(input_size, hidden_layers, output_size)
 
 # 2) LOAD THE ORIGINAL DATASET
 tracks = pd.read_csv(get_path_data_file('corrected_tracks.csv'))

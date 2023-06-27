@@ -1,20 +1,15 @@
-'''
-   Some useful common classes for the example scripts in this folder
-   Prerequisites:
-      Python 3
-      OSI https://github.com/OpenSimulationInterface/open-simulation-interface
-'''
+# The original file is located here: https://github.com/esmini/esmini/blob/v2.23.4/scripts/udp_driver/udp_osi_common.py
+# I modified line 89 where a new GroundTruth object is created.
 
 import struct
 from socket import *
 
-import  osi3.osi_groundtruth_pb2
+import osi3.osi_groundtruth_pb2
 
 input_modes = {
     'driverInput': 1,
     'stateXYZHPR': 2,
     'stateXYH': 3,
-    'stateSVAH': 4,
 }
 
 base_port = 53995

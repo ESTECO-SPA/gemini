@@ -9,12 +9,9 @@ The idea is simple:
 - SimulationLink class defines time_step used by the Actors to perceive the GroundTruthInfo of the simulation,
   see `gemini.actors.SimulationLink.live`.
 
-### 0. Packages / folder
+### 0. Description of Folders
 
-- **external**: contains file/code provided at the beginning of the project. These file have been not modified except
-  for
-  `external/udp_driver/udp_osi_common.py` where a copy of GroundTruth has been returned (
-  see `external/udp_driver/udp_osi_common.py:189`)
+- **external**: contains file/code provided at the beginning of the project
 - **gemini**: source code folder
 - **test**: test folder
 - **contribution**: doc folder
@@ -29,15 +26,15 @@ The idea is simple:
 
 - Each entity interacting with the ESMINI simulator implements the Actor interface (`gemini.actors.Actor`) which takes
   as input a `gemini.connector.osi_connector.GroundTruthInfo` object (a wrapper around `osi3.osi_groundtruth_pb2`)
-- There are two kind of Actors:  `gemini.actors.SimulationRecorder` used to retrieve information from the ground truth
-  and `gemini.actors.Agent` which interacts with the simulator through `gemini.actors.AgentConnector` (which use
-  `gemini.actors.UdpSenderXYH` a wrapper around `external.udp_driver.udp_osi_common.UdpSender` )
-- The `gemini.actors.Agent` decide to "do things" based on its own logic `gemini.action_logic.ActionLogic`.
-  There are 5 logics. You should take a look to two of them: `gemini.action_logic.VariationalGeneratorLogic` and
-  `gemini.action_logic.FollowTrajectoryLogic`
+- There are two kind of Actors:  
+  - `gemini.actors.SimulationRecorder` used only to retrieve information from the ground truth
+  - `gemini.actors.Agent` which interacts with the simulator through `gemini.actors.AgentConnector` (
+    `gemini.actors.UdpSenderXYH` is in charge on composing the message to send to the simulator through `external.udp_driver.udp_osi_common.UdpSender`)
+- The `gemini.actors.Agent` decide to "act" based on its own logic `gemini.action_logic.ActionLogic`.
+  We have defined 5 logics (for more information `gemini.action_logic`). Please take a look to the following two:
     - `gemini.action_logic.VariationalGeneratorLogic`  is the logic of the IRL model. You can see that it identify the
-      two nearest vehicles in a distance range of 200mt and passes this information to the IRL model which is a
-      `external.IRL.Auxiliary_functions.architectures.Generic_Network` (see the field `gemini/action_logic.py:58`).
+      two nearest vehicles in a distance range of 200mt and passes this information to the IRL model which implements 
+      `external.IRL.Auxiliary_functions.architectures_interface.VariationalGenerator` (see the field `gemini/action_logic.py:58`).
     - `gemini.action_logic.FollowTrajectoryLogic`  is a logic which inject the original dataset trajectories
       into simulation. It uses the callable `gemini.common.VehicleTrajectory` that takes as input a time and return the
       `gemini.common.VehicleState` at that specific time. This is a result of an interpolation,  
@@ -58,7 +55,7 @@ simulation.
 Please refer to `contribution/compare_performance/inject_IRL.py`
 
 - Step 1: load the original IRL pretrained model. It is
-  a `external.IRL.Auxiliary_functions.architectures.Variational_Generator`
+  a `external.IRL.Auxiliary_functions.architectures.VariationalGenerator`
 - Step 2: load an episode (interaction between a target vehicle and obstacles vehicles)
 - Step 3: create an open scenario file that is compatible with the aforementioned episode
 - Step 4: run a simulation of the previous episode (with OSI/UDP open channel)

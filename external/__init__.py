@@ -1,7 +1,9 @@
+
 from .IRL.Auxiliary_functions.architectures_interface import (
-    # Generic_Network,
-    Variational_Generator,
+    VariationalGenerator,
+    VariationalGeneratorEncoded,
 )
+
 
 from .udp_driver.udp_osi_common import (
     OSIReceiver,
@@ -10,8 +12,8 @@ from .udp_driver.udp_osi_common import (
 )
 
 __all__ = [
-    # "Generic_Network",
-    "Variational_Generator",
+    "VariationalGeneratorEncoded",
+    "VariationalGenerator",
     "OSIReceiver",
     "UdpSender",
     "input_modes",

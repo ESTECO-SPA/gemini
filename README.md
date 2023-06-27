@@ -10,7 +10,7 @@ Clone this repository into ```<root_folder>``` (use the name that you prefer)
 ```commandline
 mkdir <root_folder>
 cd <root_folder>
-git clone git@github.com:simonesilvetti/gemini.git
+git clone git@github.com:ESTECO-SPA/gemini.git
 ```
 
 ### Step 2: Installing ESMINI
@@ -18,7 +18,8 @@ git clone git@github.com:simonesilvetti/gemini.git
 There are two options:
 
 ##### Downloading executable (**Recommended**)
-- Download the latest ESMINI release ```esmini-demo_<your_os>.zip``` from https://github.com/esmini/esmini/releases/latest and extract into the folder `<root_folder>/esmini`.
+
+- Download the latest ESMINI release 2.23.4 ```esmini-demo_<your_os>.zip``` from https://github.com/esmini/esmini/releases/ and extract into the folder `<root_folder>/esmini`. (**Please consider** that the implementation has been based on the ESMINI rev version 6a8cb89. You can download a compiled version for Linux of that revision [here](https://drive.google.com/file/d/14vAQjZJfrkWKuODzIClLpYBiIBPt6gUe/view?usp=sharing)).
 
 #### Build from scratch
 - Build ESMINI from scratch (instructions available here: https://esmini.github.io/)
@@ -114,7 +115,7 @@ pointing the ```root_folder```
 
 ### Step 6: download necessary files and set DATA_PATH
 To execute the script contained in  you need to download [this](https://github.com/ESTECO-SPA/gemini/blob/main/contribution/analysis/data.zip) zip. 
-It contains the data folder that you have to extract in the `<root_folder>` and the xosc folder (you have to copy its content into `esmini/resources/xosc/`)
+It contains the data folder that you have to extract in the `<root_folder>` and the xosc folder (you have to copy its content into `esmini/resources/xosc/`).
 Read the instruction contained into it. 
 
 ## How to run tests

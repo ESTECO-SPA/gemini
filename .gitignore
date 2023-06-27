@@ -132,3 +132,5 @@ dmypy.json
 .idea/
 /old/
 external/IRL/Auxiliary_functions/__pycache__/
+/contribution/export/
+/external/IRL/Auxiliary_functions/architectures.py

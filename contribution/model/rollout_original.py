@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import torch
 
-from external import Variational_Generator
+from external import VariationalGenerator
 from gemini.dataset import PlotFiskhamnsmotet
 from gemini.resources import get_path_data_file
 
@@ -221,7 +221,7 @@ hidden_layers = [18, 18, 16, 16, 14, 14, 12, 12, 12]
 output_size = 5
 # Load Generator
 data = dict()
-G = Variational_Generator(input_size, hidden_layers, output_size)
+G = VariationalGenerator(input_size, hidden_layers, output_size)
 
 roll_lists = []
 target_id = 5

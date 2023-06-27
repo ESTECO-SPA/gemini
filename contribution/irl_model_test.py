@@ -2,7 +2,7 @@ import multiprocessing
 
 import pandas as pd
 
-from external import Variational_Generator
+from external import VariationalGenerator
 from gemini.actors import SimulationLink, SimulationRecorder
 from gemini.dataset import TrajectoryDatabase
 from gemini.resources import get_path_data_file, get_scenario_path
@@ -12,7 +12,7 @@ from gemini.simulator.esmini import run_scenario
 input_size = 18
 hidden_layers = [18, 18, 16, 16, 14, 14, 12, 12, 12]
 output_size = 5  # 5 (actions in the form of mu_x, mu_y, sigma_x, sigma_y, and ρ (correlation factor)
-generator = Variational_Generator(input_size, hidden_layers, output_size)
+generator = VariationalGenerator(input_size, hidden_layers, output_size)
 
 tracks = pd.read_csv(get_path_data_file('corrected_tracks.csv'))
 db = TrajectoryDatabase(tracks)
