@@ -135,7 +135,7 @@ Please check that its configuration has the following settings:
 
 ### With console
 
-Enter in the gemini folder and run the following command 
+Enter in the gemini folder and run the following command (remember to activate the gemini conda environment)
 
 ```commandline
 python -m unittest discover -s ./test -t ./
