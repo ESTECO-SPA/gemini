@@ -13,7 +13,6 @@ from gemini.simulator.esmini import run_scenario
 input_size = 18
 hidden_layers = [18, 18, 16, 16, 14, 14, 12, 12, 12]
 output_size = 5  # 5 (actions in the form of mu_x, mu_y, sigma_x, sigma_y, and ρ (correlation factor)
-variational_generator_path = "/home/ssilvetti/variational_generator/variational_generator";
 generator = VariationalGeneratorEncoded(input_size, hidden_layers, output_size,
                                         get_path_data_file("variational_generator/variational_generator"),
                                         get_path_data_file("end_generator2.pt"))
